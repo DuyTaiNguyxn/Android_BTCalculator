@@ -42,17 +42,22 @@ public class MainActivity extends AppCompatActivity {
                 String strB = edt_b.getText().toString();
 
                 if(!strA.isEmpty() || !strB.isEmpty()){
-                    int a = Integer.parseInt(strA);
-                    int b = Integer.parseInt(strB);
-                    int result = a + b;
+                    if(strA.length() < 8 && strB.length() < 8){
+                        int a = Integer.parseInt(strA);
+                        int b = Integer.parseInt(strB);
+                        int result = a + b;
 
-                    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                        Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 
-                    intent.putExtra("a", a);
-                    intent.putExtra("b", b);
-                    intent.putExtra("result", result);
+                        intent.putExtra("a", a);
+                        intent.putExtra("b", b);
+                        intent.putExtra("result", result);
 
-                    startActivity(intent);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Vui lòng nhập giá trị nhỏ hơn", Toast.LENGTH_LONG).show();;
+                    }
                 }
                 else{
                     Toast.makeText(MainActivity.this, "Vui lòng nhập a & b",Toast.LENGTH_LONG).show();
